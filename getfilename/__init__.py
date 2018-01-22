@@ -7,7 +7,19 @@ import ntpath
 
 class getFileName(DirectoryPaneCommand):
     def __call__(self):
-        fileUnderCursor = self.pane.get_file_under_cursor()
-        if fileUnderCursor is not None:
-            filepath = as_human_readable(fileUnderCursor)
-            set_text(ntpath.basename(filepath))
+        filesSelection = self.pane.get_selected_files()
+        if not filesSelection:
+            fileUnderCursor = self.pane.get_file_under_cursor()
+            if fileUnderCursor is not None:
+                filepath = as_human_readable(fileUnderCursor)
+                set_text(ntpath.basename(filepath))
+        else:
+            fileList = ""
+            first = True
+            for files in filesSelection:
+                if first:
+                    fileList += ntpath.basename(as_human_readable(files))
+                    first = False
+                else:
+                    fileList += ", " + ntpath.basename(as_human_readable(files))
+            set_text(fileList)
