@@ -2,7 +2,7 @@
 
 Plugin for [fman.io](https://fman.io) to copy the file selected name to the clipboard.
 
-You can install this plugin by pressing `<shift+cmd+p>` to open the command pallet. Then type `install plugin`. Look for the `getfilename` plugin and select it.
+Install with [fman's built-in command for installing plugins](https://fman.io/docs/installing-plugins).
 
 ### Usage
 
